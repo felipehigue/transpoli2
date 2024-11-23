@@ -1,0 +1,36 @@
+<!-- usuarios/templates/usuarios/actualizar_usuario.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Usuario</title>
+</head>
+<body>
+    <h1>Actualizar Usuario</h1>
+    <form action="/api/usuarios/actualizar/{{ usuario_id }}/" method="POST">
+        <!-- CSRF token para protección contra ataques CSRF -->
+        {% csrf_token %}
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ usuario.nombre }}" required>
+        <br>
+
+        <label for="rol">Rol:</label>
+        <select id="rol" name="rol" required>
+            <option value="Admin" {% if usuario.rol == "Admin" %}selected{% endif %}>Admin</option>
+            <option value="Usuario" {% if usuario.rol == "Usuario" %}selected{% endif %}>Usuario</option>
+        </select>
+        <br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ usuario.email }}" required>
+        <br>
+
+        <button type="submit">Actualizar</button>
+    </form>
+
+    <a href="/api/usuarios/">Volver a la lista de usuarios</a>
+</body>
+</html>
+

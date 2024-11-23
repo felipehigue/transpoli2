@@ -1,0 +1,99 @@
+{<!-- vehiculo/actualizar_vehiculo.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Vehículo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Actualizar Vehículo</h2>
+
+    <form method="POST" action="{% url 'actualizar_vehiculo' vehiculo.id %}">
+        {% csrf_token %}
+
+        <!-- Campo Tipo -->
+        <div class="form-group">
+            <label for="tipo">Tipo de Vehículo</label>
+            <select class="form-control" id="tipo" name="tipo" required>
+                <option value="">Selecciona el tipo</option>
+                <option value="camion" {% if vehiculo.tipo == 'camion' %}selected{% endif %}>Camión</option>
+                <option value="camioneta" {% if vehiculo.tipo == 'camioneta' %}selected{% endif %}>Camioneta</option>
+                <option value="motoneta" {% if vehiculo.tipo == 'motoneta' %}selected{% endif %}>Motoneta</option>
+                <option value="furgon" {% if vehiculo.tipo == 'furgon' %}selected{% endif %}>Furgón</option>
+            </select>
+        </div>
+
+        <!-- Campo Placa (No editable) -->
+        <div class="form-group">
+            <label for="placa">Placa</label>
+            <input type="text" class="form-control" id="placa" name="placa" value="{{ vehiculo.placa }}" disabled>
+        </div>
+
+        <!-- Campo Ubicación Actual -->
+        <div class="form-group">
+            <label for="ubicacion_actual">Ubicación Actual</label>
+            <input type="text" class="form-control" id="ubicacion_actual" name="ubicacion_actual" value="{{ vehiculo.ubicacion_actual }}">
+        </div>
+
+        <!-- Campo Estado -->
+        <div class="form-group">
+            <label for="estado">Estado</label>
+            <select class="form-control" id="estado" name="estado" required>
+                <option value="activo" {% if vehiculo.estado == 'activo' %}selected{% endif %}>Activo</option>
+                <option value="inactivo" {% if vehiculo.estado == 'inactivo' %}selected{% endif %}>Inactivo</option>
+            </select>
+        </div>
+
+        <!-- Campo Kilometraje -->
+        <div class="form-group">
+            <label for="kilometraje">Kilometraje</label>
+            <input type="number" class="form-control" id="kilometraje" name="kilometraje" value="{{ vehiculo.kilometraje }}" required>
+        </div>
+
+        <!-- Campo Sensor -->
+        <div class="form-group">
+            <label for="sensor">Sensor</label>
+            <select class="form-control" id="sensor" name="sensor" required>
+                <option value="activo" {% if vehiculo.sensor == 'activo' %}selected{% endif %}>Activo</option>
+                <option value="inactivo" {% if vehiculo.sensor == 'inactivo' %}selected{% endif %}>Inactivo</option>
+            </select>
+        </div>
+
+        <!-- Campo Conductor -->
+        <div class="form-group">
+            <label for="conductor">Conductor</label>
+            <input type="text" class="form-control" id="conductor" name="conductor" value="{{ vehiculo.conductor }}" required>
+        </div>
+
+        <!-- Campo Mantenimiento Ruta Actual -->
+        <div class="form-group">
+            <label for="mantenimiento_ruta_actual">Mantenimiento Ruta Actual</label>
+            <input type="text" class="form-control" id="mantenimiento_ruta_actual" name="mantenimiento_ruta_actual" value="{{ vehiculo.mantenimiento_ruta_actual }}">
+        </div>
+
+        <!-- Campo Ruta -->
+        <div class="form-group">
+            <label for="ruta">Ruta</label>
+            <input type="text" class="form-control" id="ruta" name="ruta" value="{{ vehiculo.ruta }}">
+        </div>
+
+        <!-- Campo Reporte -->
+        <div class="form-group">
+            <label for="reporte">Reporte</label>
+            <input type="text" class="form-control" id="reporte" name="reporte" value="{{ vehiculo.reporte }}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Actualizar Vehículo</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

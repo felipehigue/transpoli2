@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Vehículo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Crear Vehículo</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="tipo" class="form-label">Tipo de Vehículo</label>
+                        {{ form.tipo }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="placa" class="form-label">Placa</label>
+                        {{ form.placa }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="conductor" class="form-label">Conductor</label>
+                        {{ form.conductor }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="ruta" class="form-label">Ruta</label>
+                        {{ form.ruta }}
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Crear Vehículo</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
