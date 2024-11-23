@@ -1,3 +1,12 @@
-instale django 
+# instale django 
+
+
 pip install django 
-pyhton manage.py run server # con esto inicia el proyecto
+
+
+
+
+
+# con esto inicia el proyecto
+
+pyhton manage.py run server 
