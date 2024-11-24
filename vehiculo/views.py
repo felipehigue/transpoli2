@@ -20,12 +20,15 @@ def listar_vehiculos(request):
     return render(request, 'listar_vehiculos.html', {'vehiculos': vehiculos})
 
 def detalle_vehiculo(request, vehiculo_id):
+    # Utilizar el DAO para obtener el vehículo por su ID
     vehiculo = vehiculoDAO.obtener_por_id(vehiculo_id)
+    
     if vehiculo:
-        vehiculo_data = {"id": vehiculo.id, "nombre": vehiculo.nombre, "email": vehiculo.email, "activo": vehiculo.activo}
-        return JsonResponse(vehiculo_data)
-    return JsonResponse({"error": "vehiculo no encontrado"}, status=404)
-
+        # Pasar el vehículo a la plantilla para mostrar sus detalles
+        return render(request, 'detalle_vehiculo.html', {'vehiculo': vehiculo})
+    
+    # Si el vehículo no se encuentra, pasar un mensaje de error a la misma plantilla
+    return render(request, 'detalle_vehiculo.html', {'error': 'Vehículo no encontrado'})
 def crear_vehiculo(request):
     if request.method == 'POST':
         form = VehiculoForm(request.POST)

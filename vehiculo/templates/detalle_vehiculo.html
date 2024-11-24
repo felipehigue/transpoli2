@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalles del Vehículo</title>
+</head>
+<body>
+    <h1>Detalles del Vehículo</h1>
+    
+    <!-- Mostrar el mensaje de error si no se encuentra el vehículo -->
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% else %}
+        <p><strong>Conductor:</strong> {{ vehiculo.conductor }}</p>
+        <p><strong>Estado:</strong> {{ vehiculo.estado }}</p>
+        <p><strong>Sensor:</strong> {{ vehiculo.sensor }}</p>
+        <p><strong>Ubicación:</strong> {{ vehiculo.ubicacion }}</p>
+        <p><strong>Kilometraje:</strong> {{ vehiculo.kilometraje }}</p>
+        <p><strong>Ruta:</strong> {{ vehiculo.ruta }}</p>
+        <p><strong>Reporte:</strong> {{ vehiculo.reporte }}</p>
+        <p><strong>Mantenimiento:</strong> {{ vehiculo.mantenimiento }}</p>
+    {% endif %}
+</body>
+</html>
